@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Background Color Changer</title>
+</head>
+<body>
+
+    <!-- Required lines at start -->
+    <p>s.suraj</p>
+    <p>24BCE0346</p>
+
+    <h2>Click a button to change background color</h2>
+
+    <!-- Button controls -->
+    <button type="button" onclick="changeColor('red')">Red</button>
+    <button type="button" onclick="changeColor('green')">Green</button>
+    <button type="button" onclick="changeColor('blue')">Blue</button>
+
+    <script>
+        // Function with parameter
+        function changeColor(color) {
+            document.body.style.backgroundColor = color;
+        }
+    </script>
+
+</body>
+</html>
