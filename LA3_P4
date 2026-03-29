@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Area of Rectangle</title>
+</head>
+<body>
+
+    <!-- Required lines at start -->
+    <p>s.suraj</p>
+    <p>24BCE0346</p>
+
+<h2>Area of Rectangle</h2>
+
+Length: <input type="text" id="lengthValue"><br><br>
+Width: <input type="text" id="widthValue"><br><br>
+
+<button onclick="calculateArea()">Calculate Area</button>
+
+<p id="result"></p>
+
+<script>
+function calculateArea() {
+    var lengthValue = document.getElementById("lengthValue").value;
+    var widthValue = document.getElementById("widthValue").value;
+
+    // Integer calculation
+    var intArea = parseInt(lengthValue) * parseInt(widthValue);
+
+    // Float calculation (loose typing)
+    var floatArea = parseFloat(lengthValue) * parseFloat(widthValue);
+
+    document.getElementById("result").innerHTML =
+        "Area with integers: " + intArea + "<br>" +
+        "Area with floating values: " + floatArea;
+}
+</script>
+
+</body>
+</html>
