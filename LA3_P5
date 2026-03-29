@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+</head>
+<body>
+
+    <!-- Required lines at start -->
+    <p>s.suraj</p>
+    <p>24BCE0346</p>
+
+<h2>Simple Calculator</h2>
+
+Number 1: <input type="number" id="num1" step="any"><br><br>
+Number 2: <input type="number" id="num2" step="any"><br><br>
+
+<button onclick="calculate('add')">Add</button>
+<button onclick="calculate('sub')">Subtract</button>
+<button onclick="calculate('mul')">Multiply</button>
+<button onclick="calculate('div')">Divide</button>
+
+<p id="result"></p>
+
+<script>
+function calculate(operation) {
+    var n1 = parseFloat(document.getElementById("num1").value);
+    var n2 = parseFloat(document.getElementById("num2").value);
+    var result;
+
+    switch(operation) {
+        case 'add':
+            result = n1 + n2;
+            break;
+
+        case 'sub':
+            result = n1 - n2;
+            break;
+
+        case 'mul':
+            result = n1 * n2;
+            break;
+
+        case 'div':
+            if (n2 == 0) {
+                result = "Cannot divide by zero";
+            } else {
+                result = n1 / n2;
+            }
+            break;
+
+        default:
+            result = "Invalid operation";
+    }
+
+    document.getElementById("result").innerHTML = "Result: " + result;
+}
+</script>
+
+</body>
+</html>
