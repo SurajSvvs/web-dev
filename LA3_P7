@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>While Loop Example</title>
+</head>
+<body>
+
+    <!-- Required lines at start -->
+    <p>s.suraj</p>
+    <p>24BCE0346</p>
+
+<h2>Print Numbers from 1 to N</h2>
+
+Enter N: <input type="text" id="num"><br><br>
+
+<button onclick="printNumbers()">Print</button>
+
+<p id="output"></p>
+
+<script>
+function printNumbers() {
+    var n = parseInt(document.getElementById("num").value);
+
+    var i = 1; // counter initialization
+    var result = "";
+
+    while (i <= n) {
+        result = result + i + " ";
+        i++; // increment
+    }
+
+    document.getElementById("output").innerHTML = result;
+}
+</script>
+
+</body>
+</html>
