@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Font Customization Tool</title>
+</head>
+<body>
+
+    <!-- Required lines at start -->
+    <p>s.suraj</p>
+    <p>24BCE0346</p>
+
+<h2>Font Customization Tool</h2>
+
+<fieldset>
+    <legend>Customize Text</legend>
+
+    Font Size:
+    <input type="range" id="size" min="10" max="50" value="20" oninput="changeStyle()"><br><br>
+
+    Text Color:
+    <input type="color" id="color" onchange="changeStyle()"><br><br>
+
+    Background Color:
+    <input type="color" id="bgcolor" onchange="changeStyle()"><br><br>
+
+</fieldset>
+
+<br>
+
+<p id="text">This is customizable text</p>
+
+<script>
+function changeStyle() {
+    var text = document.getElementById("text");
+
+    var size = document.getElementById("size").value;
+    var color = document.getElementById("color").value;
+    var bgcolor = document.getElementById("bgcolor").value;
+
+    // Applying styles dynamically
+    text.style.fontSize = size + "px";
+    text.style.color = color;
+    text.style.backgroundColor = bgcolor;
+}
+</script>
+
+</body>
+</html>
