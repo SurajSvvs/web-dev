@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello World Page</title>
+</head>
+<body>
+	<!-- Required lines -->
+    <p>S.SURAJ</p>
+    <p>24BCE0346</p>
+
+    <h2 id="demo">Click the button below</h2>
+
+    <button onclick="showMessage()">Click Me</button>
+
+    <script>
+        // Variable declaration
+        var message = "Hello, world!";
+
+        // Function declaration
+        function showMessage() {
+            // DOM access using getElementById
+            var element = document.getElementById("demo");
+
+            // Using outerHTML to replace the entire element
+            element.outerHTML = "<h2>" + message + "</h2>";
+        }
+    </script>
+
+    <br><br>
+
+</body>
+</html>
