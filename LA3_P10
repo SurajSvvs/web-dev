@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkbox Example</title>
+</head>
+<body>
+
+    <!-- Required lines at start -->
+    <p>s.suraj</p>
+    <p>24BCE0346</p>
+
+<h2>Select Subjects</h2>
+
+<input type="checkbox" name="subject" value="Math">Math<br>
+<input type="checkbox" name="subject" value="Physics">Physics<br>
+<input type="checkbox" name="subject" value="Chemistry">Chemistry<br>
+<input type="checkbox" name="subject" value="Biology">Biology<br><br>
+
+<button onclick="countSubjects()">Show Selection</button>
+
+<p id="result"></p>
+
+<script>
+function countSubjects() {
+    var subjects = document.getElementsByName("subject");
+    var selectedSubjects = [];
+    var count = 0;
+
+    for (var i = 0; i < subjects.length; i++) {
+        if (subjects[i].checked) {
+            selectedSubjects.push(subjects[i].value);
+            count++;
+        }
+    }
+
+    document.getElementById("result").innerHTML =
+        "Selected Count: " + count + "<br>" +
+        "Subjects: " + selectedSubjects.join(", ");
+}
+</script>
+
+</body>
+</html>
