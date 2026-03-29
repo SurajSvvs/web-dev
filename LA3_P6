@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Information System</title>
+
+    <style>
+        body {
+            font-family: Arial;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        th {
+            background-color: lightgray;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- Required lines at start -->
+    <p>s.suraj</p>
+    <p>24BCE0346</p>
+
+<h2>Student Information System</h2>
+
+<form id="studentForm">
+    Name: <input type="text" id="name"><br><br>
+    Age: <input type="number" id="age"><br><br>
+    Course: 
+    <select id="course">
+        <option value="CSE">CSE</option>
+        <option value="ECE">ECE</option>
+        <option value="MECH">MECH</option>
+    </select><br><br>
+
+    Gender:
+    <input type="radio" name="gender" value="Male">Male
+    <input type="radio" name="gender" value="Female">Female<br><br>
+
+    <button type="button" onclick="addStudent()">Add Student</button>
+    <button type="button" onclick="clearForm()">Reset</button>
+</form>
+
+<div id="output"></div>
+
+<script>
+
+// Global array
+var studentList = [];
+
+// Constructor (Object)
+function Student(name, age, course, gender) {
+    this.name = name;
+    this.age = age;
+    this.course = course;
+    this.gender = gender;
+
+    // Object method using this
+    this.getDetails = function() {
+        return this.name + " | " + this.age + " | " + this.course + " | " + this.gender;
+    };
+}
+
+// Function to add student
+function addStudent() {
+
+    var name = document.getElementById("name").value;
+    var age = document.getElementById("age").value;
+    var course = document.getElementById("course").value;
+
+    var genderElements = document.getElementsByName("gender");
+    var gender = "";
+    for (var i = 0; i < genderElements.length; i++) {
+        if (genderElements[i].checked) {
+            gender = genderElements[i].value;
+        }
+    }
+
+    // Create object
+    var student = new Student(name, age, course, gender);
+
+    // Add to array
+    studentList.push(student);
+
+    displayStudents();
+
+    clearForm();
+}
+
+// Function to display students (Dynamic Table)
+function displayStudents() {
+    var table = "<table><tr><th>Name</th><th>Age</th><th>Course</th><th>Gender</th></tr>";
+
+    for (var i = 0; i < studentList.length; i++) {
+        table += "<tr>";
+        table += "<td>" + studentList[i].name + "</td>";
+        table += "<td>" + studentList[i].age + "</td>";
+        table += "<td>" + studentList[i].course + "</td>";
+        table += "<td>" + studentList[i].gender + "</td>";
+        table += "</tr>";
+    }
+
+    table += "</table>";
+
+    document.getElementById("output").innerHTML = table;
+}
+
+// Reset and focus
+function clearForm() {
+    document.getElementById("studentForm").reset();
+    document.getElementById("name").focus();
+}
+
+</script>
+
+</body>
+</html>
