@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiplication Table</title>
+</head>
+<body>
+
+    <!-- Required lines at start -->
+    <p>s.suraj</p>
+    <p>24BCE0346</p>
+
+<h2>Multiplication Table</h2>
+
+Enter Number: <input type="text" id="num"><br><br>
+
+<button onclick="printTable()">Generate Table</button>
+
+<p id="output"></p>
+
+<script>
+function printTable() {
+    var n = parseInt(document.getElementById("num").value);
+
+    var i = 1;
+    var result = "";
+
+    do {
+        result = result + n + " x " + i + " = " + (n * i) + "<br>";
+        i++;
+    } while (i <= 10);
+
+    document.getElementById("output").innerHTML = result;
+}
+</script>
+
+</body>
+</html>
