@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Skills Form</title>
+</head>
+<body>
+
+    <!-- Required lines at start -->
+    <p>s.suraj</p>
+    <p>24BCE0346</p>
+
+<h2>Select Your Skills</h2>
+
+<form id="skillsForm">
+    <input type="checkbox" name="skills" value="HTML">HTML<br>
+    <input type="checkbox" name="skills" value="CSS">CSS<br>
+    <input type="checkbox" name="skills" value="JavaScript">JavaScript<br>
+    <input type="checkbox" name="skills" value="Python">Python<br>
+    <input type="checkbox" name="skills" value="Java">Java<br><br>
+
+    <button type="button" onclick="validateSkills()">Submit</button>
+</form>
+
+<p id="result"></p>
+
+<script>
+function validateSkills() {
+    var skillList = document.getElementsByName("skills");
+    var selectedSkills = [];
+
+    // for loop with index
+    for (var i = 0; i < skillList.length; i++) {
+        if (skillList[i].checked) {
+            selectedSkills.push(skillList[i].value);
+        }
+    }
+
+    // validation using array length
+    if (selectedSkills.length < 3) {
+        document.getElementById("result").innerHTML =
+            "Error: Select at least 3 skills";
+    } else {
+        document.getElementById("result").innerHTML =
+            "Selected Skills: " + selectedSkills.join(", ");
+    }
+
+    // form validity check
+    document.getElementById("skillsForm").checkValidity();
+}
+</script>
+
+</body>
+</html>
