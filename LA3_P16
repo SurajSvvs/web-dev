@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Overlapping Image Gallery</title>
+
+    <style>
+        .gallery {
+            position: relative;
+            width: 500px;
+            height: 300px;
+        }
+
+        .gallery img {
+            position: absolute;
+            width: 200px;
+            height: 150px;
+            cursor: pointer;
+            border: 2px solid black;
+        }
+
+        /* Initial overlapping positions */
+        #img1 { top: 20px; left: 20px; z-index: 1; }
+        #img2 { top: 50px; left: 80px; z-index: 2; }
+        #img3 { top: 80px; left: 140px; z-index: 3; }
+    </style>
+
+</head>
+<body>
+
+    <!-- Required lines at start -->
+    <p>s.suraj</p>
+    <p>24BCE0346</p>
+
+<h2>Overlapping Image Gallery</h2>
+
+<div class="gallery">
+    <img id="img1" src="https://via.placeholder.com/200x150?text=Image1" onclick="bringToFront(this)">
+    <img id="img2" src="https://via.placeholder.com/200x150?text=Image2" onclick="bringToFront(this)">
+    <img id="img3" src="https://via.placeholder.com/200x150?text=Image3" onclick="bringToFront(this)">
+</div>
+
+<script>
+// Global variable to track highest z-index
+var topIndex = 3;
+
+function bringToFront(element) {
+    // Increment z-index using prefix ++
+    element.style.zIndex = ++topIndex;
+}
+</script>
+
+</body>
+</html>
