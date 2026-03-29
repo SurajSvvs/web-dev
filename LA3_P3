@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Generator</title>
+</head>
+<body>
+    <!-- Required lines at start -->
+    <p>s.suraj</p>
+    <p>24BCE0346</p>
+
+
+<h2>Email Address Generator</h2>
+
+<form id="emailForm">
+    First Name: <input type="text" name="fname"><br><br>
+    Last Name: <input type="text" name="lname"><br><br>
+
+    <button type="button" onclick="generateEmail(this.form)">Generate Email</button>
+</form>
+
+<br>
+<div id="result"></div>
+
+<script>
+function generateEmail(form) {
+    // Access form elements
+    var first = form.elements["fname"].value;
+    var last = form.elements["lname"].value;
+
+    // Create email using string concatenation
+    var email = first + "." + last + "@park.edu";
+
+    // Display result using innerHTML
+    document.getElementById("result").innerHTML = "Generated Email: " + email;
+
+    // Reset form
+    form.reset();
+
+    // Set focus back to first name field
+    form.elements["fname"].focus();
+}
+</script>
+
+</body>
+</html>
