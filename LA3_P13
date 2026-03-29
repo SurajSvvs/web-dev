@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Order Form</title>
+</head>
+<body>
+
+    <!-- Required lines at start -->
+    <p>s.suraj</p>
+    <p>24BCE0346</p>
+
+<h2>Product Order Form</h2>
+
+<form id="orderForm">
+
+    <fieldset>
+        <legend>Electronics</legend>
+        <input type="checkbox" name="product" value="50000">Laptop (₹50000)<br>
+        <input type="checkbox" name="product" value="20000">Tablet (₹20000)<br>
+    </fieldset>
+
+    <fieldset>
+        <legend>Accessories</legend>
+        <input type="checkbox" name="product" value="2000">Headphones (₹2000)<br>
+        <input type="checkbox" name="product" value="1000">Mouse (₹1000)<br>
+    </fieldset>
+
+    <fieldset>
+        <legend>Books</legend>
+        <input type="checkbox" name="product" value="500">Programming Book (₹500)<br>
+        <input type="checkbox" name="product" value="300">Notebook (₹300)<br>
+    </fieldset>
+
+    <br>
+    <button type="button" onclick="calculateTotal()">Calculate Total</button>
+
+</form>
+
+<p id="result"></p>
+
+<script>
+function calculateTotal() {
+    var products = document.getElementsByName("product");
+    var total = 0;
+
+    // modern for...of loop
+    for (var item of products) {
+        if (item.checked) {
+            total += parseFloat(item.value);
+        }
+    }
+
+    document.getElementById("result").innerHTML =
+        "Total Price: ₹" + total;
+}
+</script>
+
+</body>
+</html>
