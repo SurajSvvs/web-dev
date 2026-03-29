@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Interest Calculator</title>
+</head>
+<body>
+
+    <!-- Required lines at start -->
+    <p>s.suraj</p>
+    <p>24BCE0346</p>
+
+<h2>Simple Interest Calculator</h2>
+
+Principal (P): <input type="text" id="principal"><br><br>
+Rate (R): <input type="text" id="rate"><br><br>
+Time (T): <input type="text" id="time"><br><br>
+
+<button onclick="calculateSI()">Calculate SI</button>
+
+<p id="result"></p>
+
+<script>
+// Function with parameters and return value
+function calculateSimpleInterest(p, r, t) {
+    var si = (p * r * t) / 100;
+    return si;
+}
+
+// Function to handle input and display
+function calculateSI() {
+    var p = parseFloat(document.getElementById("principal").value);
+    var r = parseFloat(document.getElementById("rate").value);
+    var t = parseFloat(document.getElementById("time").value);
+
+    var result = calculateSimpleInterest(p, r, t);
+
+    document.getElementById("result").innerHTML = "Simple Interest: " + result;
+}
+</script>
+
+</body>
+</html>
