@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>React Calculator</title>
+
+  <!-- React CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <!-- Babel for JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      width: 300px;
+      margin: 100px auto;
+      padding: 20px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      background-color: white;
+      text-align: center;
+    }
+
+    input {
+      width: 90%;
+      padding: 8px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .buttons {
+      margin: 10px 0;
+    }
+
+    button {
+      padding: 8px 15px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    h1 {
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+  const { useState } = React;
+
+  function App() {
+    const [num1, setNum1] = useState("");
+    const [num2, setNum2] = useState("");
+    const [result, setResult] = useState("");
+
+    const handleAdd = () => {
+      setResult(Number(num1) + Number(num2));
+    };
+
+    const handleSubtract = () => {
+      setResult(Number(num1) - Number(num2));
+    };
+
+    return (
+      <div className="container">
+        <h3>Name: Suraj.S</h3>
+        <h3>Reg.No: 24BCE0346</h3>
+
+        <h1>Basic Calculator</h1>
+
+        <input
+          type="number"
+          value={num1}
+          onChange={(e) => setNum1(e.target.value)}
+          placeholder="Enter first number"
+        />
+
+        <input
+          type="number"
+          value={num2}
+          onChange={(e) => setNum2(e.target.value)}
+          placeholder="Enter second number"
+        />
+
+        <div className="buttons">
+          <button onClick={handleAdd}>Add</button>
+          <button onClick={handleSubtract}>Subtract</button>
+        </div>
+
+        <h2>Result: {result}</h2>
+      </div>
+    );
+  }
+
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(<App />);
+</script>
+
+</body>
+</html>
