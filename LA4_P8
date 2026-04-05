@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Country Explorer</title>
+
+  <!-- React CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <!-- Babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      text-align: center;
+    }
+
+    .container {
+      width: 90%;
+      margin: 30px auto;
+    }
+
+    input {
+      padding: 8px;
+      width: 60%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 8px 12px;
+      margin-left: 5px;
+      border: none;
+      border-radius: 5px;
+      background: #28a745;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1e7e34;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .card {
+      width: 200px;
+      padding: 10px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    h1 {
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Your Details -->
+<h3>Name: Suraj.S</h3>
+<h3>Reg.No: 24BCE0346</h3>
+
+<div id="root"></div>
+
+<script type="text/babel">
+  const { useState } = React;
+
+  // Utility Function (API call)
+  const fetchCountries = async (name) => {
+    const url = `https://restcountries.com/v3.1/name/${name}`;
+    const response = await fetch(url);
+    const data = await response.json();
+
+    return data.map(country => ({
+      name: country.name.common,
+      capital: country.capital ? country.capital[0] : "N/A",
+      population: country.population,
+      region: country.region,
+      flag: country.flags.png
+    }));
+  };
+
+  // Header Component
+  const Header = () => {
+    return <h1>Country Explorer</h1>;
+  };
+
+  // Search Component
+  const Search = ({ onSearch }) => {
+    const [input, setInput] = useState("");
+
+    return (
+      <div>
+        <input
+          type="text"
+          placeholder="Enter country name..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <button onClick={() => onSearch(input)}>Search</button>
+      </div>
+    );
+  };
+
+  // CountryCard Component
+  const CountryCard = ({ country }) => {
+    return (
+      <div className="card">
+        <img src={country.flag} alt="flag" />
+        <h3>{country.name}</h3>
+        <p><b>Capital:</b> {country.capital}</p>
+        <p><b>Population:</b> {country.population}</p>
+        <p><b>Region:</b> {country.region}</p>
+      </div>
+    );
+  };
+
+  // CountryList Component
+  const CountryList = ({ countries }) => {
+    return (
+      <div className="grid">
+        {countries.map((c, index) => (
+          <CountryCard key={index} country={c} />
+        ))}
+      </div>
+    );
+  };
+
+  // Main App
+  function App() {
+    const [countries, setCountries] = useState([]);
+
+    const handleSearch = async (name) => {
+      if (!name) return;
+      try {
+        const result = await fetchCountries(name);
+        setCountries(result);
+      } catch {
+        alert("Country not found");
+      }
+    };
+
+    return (
+      <div className="container">
+        <Header />
+        <Search onSearch={handleSearch} />
+        <CountryList countries={countries} />
+      </div>
+    );
+  }
+
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(<App />);
+</script>
+
+</body>
+</html>
