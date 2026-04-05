@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Explorer</title>
+
+  <!-- React CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <!-- Babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      text-align: center;
+    }
+
+    .container {
+      width: 90%;
+      margin: 30px auto;
+    }
+
+    input {
+      padding: 8px;
+      width: 60%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 8px 12px;
+      margin-left: 5px;
+      border: none;
+      border-radius: 5px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .card {
+      width: 180px;
+      padding: 10px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    h1 {
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Your Details -->
+<h3>Name: Suraj.S</h3>
+<h3>Reg.No: 24BCE0346</h3>
+
+<div id="root"></div>
+
+<script type="text/babel">
+  const { useState } = React;
+
+  // Utility Function (API call)
+  const fetchBooks = async (query) => {
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${query}`;
+    const response = await fetch(url);
+    const data = await response.json();
+
+    return data.items.map(item => {
+      const info = item.volumeInfo;
+
+      return {
+        title: info.title,
+        author: info.authors ? info.authors[0] : "Unknown",
+        image: info.imageLinks ? info.imageLinks.thumbnail : "",
+        publisher: info.publisher || "N/A",
+        year: info.publishedDate ? info.publishedDate.substring(0,4) : "N/A"
+      };
+    });
+  };
+
+  // Header Component
+  const Header = () => {
+    return <h1>Book Explorer</h1>;
+  };
+
+  // Search Component
+  const Search = ({ onSearch }) => {
+    const [query, setQuery] = useState("");
+
+    return (
+      <div>
+        <input
+          type="text"
+          placeholder="Search books..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <button onClick={() => onSearch(query)}>Search</button>
+      </div>
+    );
+  };
+
+  // BookCard Component
+  const BookCard = ({ book }) => {
+    return (
+      <div className="card">
+        <img src={book.image} alt="book" />
+        <h4>{book.title}</h4>
+        <p><b>Author:</b> {book.author}</p>
+        <p><b>Publisher:</b> {book.publisher}</p>
+        <p><b>Year:</b> {book.year}</p>
+      </div>
+    );
+  };
+
+  // BookList Component
+  const BookList = ({ books }) => {
+    return (
+      <div className="grid">
+        {books.map((book, index) => (
+          <BookCard key={index} book={book} />
+        ))}
+      </div>
+    );
+  };
+
+  // Main App
+  function App() {
+    const [books, setBooks] = useState([]);
+
+    const handleSearch = async (query) => {
+      if (!query) return;
+      const results = await fetchBooks(query);
+      setBooks(results);
+    };
+
+    return (
+      <div className="container">
+        <Header />
+        <Search onSearch={handleSearch} />
+        <BookList books={books} />
+      </div>
+    );
+  }
+
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(<App />);
+</script>
+
+</body>
+</html>
