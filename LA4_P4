@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>React Grade Calculator</title>
+
+  <!-- React CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <!-- Babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+
+    .container {
+      width: 300px;
+      margin: 80px auto;
+      padding: 20px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      background-color: white;
+    }
+
+    input {
+      width: 90%;
+      padding: 8px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 8px 15px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #28a745;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1e7e34;
+    }
+
+    h2 {
+      margin-top: 15px;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Your Details -->
+<h3>Name: Suraj.S</h3>
+<h3>Reg.No: 24BCE0346</h3>
+
+<div id="root"></div>
+
+<script type="text/babel">
+  const { useState } = React;
+
+  function App() {
+    const [mark1, setMark1] = useState("");
+    const [mark2, setMark2] = useState("");
+    const [mark3, setMark3] = useState("");
+    const [average, setAverage] = useState("");
+    const [grade, setGrade] = useState("");
+
+    const calculateGrade = () => {
+      const m1 = Number(mark1);
+      const m2 = Number(mark2);
+      const m3 = Number(mark3);
+
+      const avg = (m1 + m2 + m3) / 3;
+      setAverage(avg.toFixed(2));
+
+      let g = "";
+
+      if (avg >= 90) {
+        g = "A+";
+      } else if (avg >= 75) {
+        g = "A";
+      } else if (avg >= 60) {
+        g = "B";
+      } else if (avg >= 50) {
+        g = "C";
+      } else {
+        g = "F";
+      }
+
+      setGrade(g);
+    };
+
+    return (
+      <div className="container">
+        <h1>Grade Calculator</h1>
+
+        <input
+          type="number"
+          placeholder="Enter Subject 1 marks"
+          value={mark1}
+          onChange={(e) => setMark1(e.target.value)}
+        />
+
+        <input
+          type="number"
+          placeholder="Enter Subject 2 marks"
+          value={mark2}
+          onChange={(e) => setMark2(e.target.value)}
+        />
+
+        <input
+          type="number"
+          placeholder="Enter Subject 3 marks"
+          value={mark3}
+          onChange={(e) => setMark3(e.target.value)}
+        />
+
+        <button onClick={calculateGrade}>Calculate</button>
+
+        <h2>Average: {average}</h2>
+        <h2>Grade: {grade}</h2>
+      </div>
+    );
+  }
+
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(<App />);
+</script>
+
+</body>
+</html>
