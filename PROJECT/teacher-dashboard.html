@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard | Exam Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .dashboard-container {
+            width: 90%;
+            max-width: 1000px;
+            margin-top: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .dashboard-header {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .dashboard-header h2 {
+            font-size: 2rem;
+            background: linear-gradient(135deg, #fda4af 0%, #e11d48 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .action-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .action-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #f43f5e;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .action-card i {
+            font-size: 3rem;
+            color: #f43f5e;
+            margin-bottom: 0.5rem;
+        }
+
+        .action-card h3 {
+            color: #f8fafc;
+            font-size: 1.2rem;
+        }
+        
+        .action-card p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .logout-link {
+            color: #94a3b8;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .logout-link:hover {
+            color: #f8fafc;
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="teacher-theme">
+
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <div>
+                <h2>Welcome, Educator</h2>
+                <p style="color: #94a3b8; margin-top: 0.5rem;">Manage your classes and examinations effectively.</p>
+            </div>
+            <a href="index.html" class="logout-link">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </a>
+        </div>
+
+        <div class="action-grid">
+            <div class="action-card" onclick="window.location.href='create-exam.html';">
+                <i class="fa-solid fa-file-circle-plus"></i>
+                <h3>Create New Exam</h3>
+                <p>Draft new questions, set time limits, and publish exams for your students.</p>
+            </div>
+
+            <div class="action-card" onclick="window.location.href='view-submissions.html';">
+                <i class="fa-solid fa-book-open-reader"></i>
+                <h3>View Submissions</h3>
+                <p>Grade completed exams, check automated scores, and provide student feedback.</p>
+            </div>
+
+            <div class="action-card" onclick="window.location.href='teacher-bank.html';">
+                <i class="fa-solid fa-database"></i>
+                <h3>Question Bank</h3>
+                <p>Manage your repository of reusable questions across multiple subjects.</p>
+            </div>
+
+            <div class="action-card" onclick="window.location.href='teacher-analytics.html';">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Class Analytics</h3>
+                <p>View performance statistics and identify areas where students need help.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Materials | Student Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-container {
+            width: 90%;
+            max-width: 1000px;
+            margin-top: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .page-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1rem;
+        }
+
+        .page-header h2 {
+            font-size: 2rem;
+            color: #38bdf8;
+        }
+
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .material-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .material-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .material-icon {
+            font-size: 2.5rem;
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+        }
+
+        .material-info h3 {
+            color: #f8fafc;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .material-info p {
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+        .btn-download {
+            margin-top: auto;
+            background: transparent;
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+            padding: 0.6rem;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-download:hover {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+        
+        .pdf .material-icon { color: #f87171; }
+        .doc .material-icon { color: #60a5fa; }
+        .video .material-icon { color: #a78bfa; }
+    </style>
+</head>
+<body class="student-theme">
+
+    <a href="student-dashboard.html" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i> Back to Dashboard
+    </a>
+
+    <div class="page-container">
+        <div class="page-header">
+            <i class="fa-solid fa-book-journal-whills fa-2x" style="color: #38bdf8;"></i>
+            <h2>Study Materials Library</h2>
+        </div>
+
+        <div class="materials-grid">
+            
+            <div class="material-card pdf">
+                <div class="material-icon"><i class="fa-solid fa-file-pdf"></i></div>
+                <div class="material-info">
+                    <h3>Algebra Formulas Cheatsheet</h3>
+                    <p>Mathematics • 2.4 MB • Uploaded by Prof. Smith</p>
+                </div>
+                <a href="#" class="btn-download" onclick="alert('Downloading PDF...');"><i class="fa-solid fa-download"></i> Download</a>
+            </div>
+
+            <div class="material-card doc">
+                <div class="material-icon"><i class="fa-solid fa-file-word"></i></div>
+                <div class="material-info">
+                    <h3>Physics Lab Guidelines</h3>
+                    <p>Physics • 1.1 MB • Uploaded by Dr. Banner</p>
+                </div>
+                <a href="#" class="btn-download" onclick="alert('Downloading Document...');"><i class="fa-solid fa-download"></i> Download</a>
+            </div>
+
+            <div class="material-card video">
+                <div class="material-icon"><i class="fa-solid fa-file-video"></i></div>
+                <div class="material-info">
+                    <h3>Intro to Organic Chemistry</h3>
+                    <p>Chemistry • 45 MB • Uploaded by Mr. White</p>
+                </div>
+                <a href="#" class="btn-download" onclick="alert('Opening Video Player...');"><i class="fa-solid fa-play"></i> Watch Now</a>
+            </div>
+
+            <div class="material-card pdf">
+                <div class="material-icon"><i class="fa-solid fa-file-pdf"></i></div>
+                <div class="material-info">
+                    <h3>Calculus Semester 1 Notes</h3>
+                    <p>Mathematics • 12.8 MB • Uploaded by Prof. Smith</p>
+                </div>
+                <a href="#" class="btn-download" onclick="alert('Downloading PDF...');"><i class="fa-solid fa-download"></i> Download</a>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

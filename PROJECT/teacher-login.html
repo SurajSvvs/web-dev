@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Login | Exam Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <a href="index.html" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i> Back to Home
+    </a>
+
+    <div class="login-container teacher-theme">
+        <div class="login-header">
+            <h2>Teacher Portal</h2>
+            <p>Log in to manage exams and students</p>
+        </div>
+
+        <form id="teacher-form" onsubmit="event.preventDefault(); animateLogin(this, 'teacher');">
+            <div class="input-group">
+                <label for="empId">Employee ID / Email</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="text" id="empId" required placeholder="e.g. prof.smith@university.edu">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="password" required placeholder="Enter your password">
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Secure Login <i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+
+            <div class="extra-links">
+                <a href="#">Forgot password?</a>
+                <a href="#">Administration IT Support</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

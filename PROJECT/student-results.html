@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Results | Student Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-container {
+            width: 90%;
+            max-width: 900px;
+            margin-top: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .page-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1rem;
+        }
+
+        .page-header h2 {
+            font-size: 2rem;
+            color: #38bdf8;
+        }
+
+        .results-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .result-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .result-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .exam-info h3 {
+            color: #f8fafc;
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .exam-info p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .exam-score {
+            text-align: right;
+        }
+
+        .score-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #38bdf8;
+        }
+
+        .score-total {
+            color: #64748b;
+            font-size: 1rem;
+        }
+
+        .score-status {
+            display: inline-block;
+            margin-top: 0.3rem;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-pass {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+        }
+
+        .status-fail {
+            background: rgba(244, 63, 94, 0.2);
+            color: #fb7185;
+        }
+    </style>
+</head>
+<body class="student-theme">
+
+    <a href="student-dashboard.html" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i> Back to Dashboard
+    </a>
+
+    <div class="page-container">
+        <div class="page-header">
+            <i class="fa-solid fa-square-poll-vertical fa-2x" style="color: #38bdf8;"></i>
+            <h2>My Past Results</h2>
+        </div>
+
+        <div class="results-list">
+            
+            <div class="result-item">
+                <div class="exam-info">
+                    <h3>Basic Mathematics</h3>
+                    <p>Taken on: October 12, 2024</p>
+                </div>
+                <div class="exam-score">
+                    <span class="score-value">92</span><span class="score-total">/100</span>
+                    <br>
+                    <span class="score-status status-pass">Passed</span>
+                </div>
+            </div>
+
+            <div class="result-item">
+                <div class="exam-info">
+                    <h3>Physics Midterm</h3>
+                    <p>Taken on: September 28, 2024</p>
+                </div>
+                <div class="exam-score">
+                    <span class="score-value">78</span><span class="score-total">/100</span>
+                    <br>
+                    <span class="score-status status-pass">Passed</span>
+                </div>
+            </div>
+
+            <div class="result-item">
+                <div class="exam-info">
+                    <h3>Chemistry Quiz 1</h3>
+                    <p>Taken on: September 10, 2024</p>
+                </div>
+                <div class="exam-score">
+                    <span class="score-value">45</span><span class="score-total">/100</span>
+                    <br>
+                    <span class="score-status status-fail">Needs Review</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+

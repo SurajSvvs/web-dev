@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Analytics | Teacher Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-container {
+            width: 90%;
+            max-width: 1000px;
+            margin-top: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+            margin-bottom: 2rem;
+        }
+
+        .page-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1rem;
+        }
+
+        .page-header h2 {
+            font-size: 2rem;
+            color: #f43f5e;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-lbl {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .stat-card.highlight .stat-value {
+            background: linear-gradient(135deg, #fda4af 0%, #e11d48 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .charts-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .chart-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 1.5rem;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chart-box h3 {
+            color: #f8fafc;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .mock-chart {
+            flex: 1;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding: 1rem 0;
+            background: rgba(0,0,0,0.1);
+        }
+
+        .bar {
+            width: 40px;
+            background: #f43f5e;
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            transition: height 1s ease;
+        }
+
+        .bar::after {
+            content: attr(data-val);
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+        
+        .bar-lbl {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #cbd5e1;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .charts-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="teacher-theme">
+
+    <a href="teacher-dashboard.html" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i> Back to Dashboard
+    </a>
+
+    <div class="page-container">
+        <div class="page-header">
+            <i class="fa-solid fa-chart-line fa-2x" style="color: #f43f5e;"></i>
+            <h2>Class Analytics Overview</h2>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">142</div>
+                <div class="stat-lbl">Active Students</div>
+            </div>
+            <div class="stat-card highlight">
+                <div class="stat-value">84%</div>
+                <div class="stat-lbl">Avg. Pass Rate</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">12</div>
+                <div class="stat-lbl">Exams Published</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">4.2h</div>
+                <div class="stat-lbl">Avg. Monthly Study</div>
+            </div>
+        </div>
+
+        <div class="charts-container">
+            <div class="chart-box">
+                <h3>Latest Exam Performance (Basic Math)</h3>
+                <div class="mock-chart">
+                    <div class="bar" style="height: 20%; background: #ef4444;" data-val="0-40"><span class="bar-lbl">Fails</span></div>
+                    <div class="bar" style="height: 40%; background: #fbbf24;" data-val="41-60"><span class="bar-lbl">Average</span></div>
+                    <div class="bar" style="height: 70%; background: #38bdf8;" data-val="61-80"><span class="bar-lbl">Good</span></div>
+                    <div class="bar" style="height: 90%; background: #4ade80;" data-val="81-100"><span class="bar-lbl">Excellent</span></div>
+                </div>
+            </div>
+
+            <div class="chart-box">
+                <h3>Submissions Over Time</h3>
+                <div class="mock-chart">
+                    <div class="bar" style="height: 30%; background: #8b5cf6;" data-val="45"><span class="bar-lbl">Week 1</span></div>
+                    <div class="bar" style="height: 50%; background: #8b5cf6;" data-val="78"><span class="bar-lbl">Week 2</span></div>
+                    <div class="bar" style="height: 40%; background: #8b5cf6;" data-val="62"><span class="bar-lbl">Week 3</span></div>
+                    <div class="bar" style="height: 80%; background: #8b5cf6;" data-val="115"><span class="bar-lbl">Week 4</span></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

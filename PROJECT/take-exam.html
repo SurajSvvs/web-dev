@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Math Exam | Exam Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .exam-container {
+            width: 90%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .exam-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .exam-header h2 {
+            font-size: 1.8rem;
+            color: #38bdf8;
+        }
+
+        .timer {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #f43f5e;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .question {
+            margin-bottom: 2rem;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #38bdf8;
+        }
+
+        .question h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #f8fafc;
+        }
+
+        .options label {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .options label:hover {
+            background: rgba(56, 189, 248, 0.1);
+            transform: translateX(5px);
+        }
+
+        .options input[type="radio"] {
+            accent-color: #38bdf8;
+            transform: scale(1.2);
+        }
+
+        .btn-submit-exam {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .btn-submit-exam:hover {
+            background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);
+        }
+
+        .cancel-link {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: #94a3b8;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .cancel-link:hover {
+            color: #f8fafc;
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="student-theme">
+
+    <a href="student-dashboard.html" class="cancel-link">
+        <i class="fa-solid fa-xmark"></i> Cancel Exam
+    </a>
+
+    <div class="exam-container">
+        <div class="exam-header">
+            <h2>Basic Mathematics Exam</h2>
+            <div class="timer">
+                <i class="fa-regular fa-clock"></i> 30:00
+            </div>
+        </div>
+
+        <form id="exam-form" onsubmit="event.preventDefault(); submitExam();">
+            
+            <div class="question">
+                <h3>1. What is the value of 15 x 12?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="160" required> 160</label>
+                    <label><input type="radio" name="q1" value="170"> 170</label>
+                    <label><input type="radio" name="q1" value="180"> 180</label>
+                    <label><input type="radio" name="q1" value="190"> 190</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>2. Solve for x: 3x + 12 = 27</h3>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="4" required> x = 4</label>
+                    <label><input type="radio" name="q2" value="5"> x = 5</label>
+                    <label><input type="radio" name="q2" value="6"> x = 6</label>
+                    <label><input type="radio" name="q2" value="7"> x = 7</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3>3. What is the square root of 144?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="10" required> 10</label>
+                    <label><input type="radio" name="q3" value="12"> 12</label>
+                    <label><input type="radio" name="q3" value="14"> 14</label>
+                    <label><input type="radio" name="q3" value="16"> 16</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit-exam"><i class="fa-solid fa-paper-plane"></i> Submit Exam</button>
+        </form>
+    </div>
+
+    <script>
+        function submitExam() {
+            let score = 0;
+            const q1 = document.querySelector('input[name="q1"]:checked').value;
+            const q2 = document.querySelector('input[name="q2"]:checked').value;
+            const q3 = document.querySelector('input[name="q3"]:checked').value;
+            
+            // Correct answers: 180, 5, 12
+            if (q1 === "180") score += 33.33;
+            if (q2 === "5") score += 33.33;
+            if (q3 === "12") score += 33.34;
+            
+            localStorage.setItem('lastExamScore', Math.round(score));
+            window.location.href = 'exam-result.html';
+        }
+    </script>
+</body>
+</html>

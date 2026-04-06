@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Bank | Teacher Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-container {
+            width: 90%;
+            max-width: 900px;
+            margin-top: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1rem;
+        }
+
+        .page-header h2 {
+            font-size: 2rem;
+            color: #f43f5e;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-add-question {
+            background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(225, 29, 72, 0.4);
+            transition: all 0.3s;
+        }
+
+        .btn-add-question:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(225, 29, 72, 0.6);
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-bar select, .filter-bar input {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .filter-bar input {
+            flex: 1;
+        }
+
+        .question-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .question-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .question-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(244, 63, 94, 0.3);
+        }
+
+        .question-card-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .subject-tag {
+            background: rgba(244, 63, 94, 0.1);
+            color: #f43f5e;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .diff-tag {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .qa-text h4 {
+            color: #f8fafc;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        .qa-text p {
+            color: #38bdf8;
+            font-size: 0.95rem;
+        }
+
+        .action-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 1rem;
+        }
+
+        .action-links button {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .action-links button:hover {
+            color: #f8fafc;
+        }
+        
+        .action-links button.edit:hover { color: #f43f5e; }
+        .action-links button.delete:hover { color: #ef4444; }
+
+    </style>
+</head>
+<body class="teacher-theme">
+
+    <a href="teacher-dashboard.html" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i> Back to Dashboard
+    </a>
+
+    <div class="page-container">
+        <div class="page-header">
+            <h2><i class="fa-solid fa-database"></i> Question Bank Repository</h2>
+            <button class="btn-add-question" onclick="alert('Opening Question Editor...');"><i class="fa-solid fa-plus"></i> New Question</button>
+        </div>
+
+        <div class="filter-bar">
+            <select>
+                <option value="all">All Subjects</option>
+                <option value="math">Mathematics</option>
+                <option value="physics">Physics</option>
+                <option value="cs">Computer Science</option>
+            </select>
+            <select>
+                <option value="all">All Difficulties</option>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+            <input type="text" placeholder="Search questions...">
+        </div>
+
+        <div class="question-list">
+            
+            <div class="question-card">
+                <div class="question-card-header">
+                    <span class="subject-tag">Mathematics</span>
+                    <span class="diff-tag"><i class="fa-solid fa-signal" style="color: #4ade80;"></i> Easy</span>
+                </div>
+                <div class="qa-text">
+                    <h4>What is the value of 15 x 12?</h4>
+                    <p><i class="fa-solid fa-check-circle"></i> Answer: 180</p>
+                </div>
+                <div class="action-links">
+                    <button class="edit"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                    <button class="delete"><i class="fa-solid fa-trash-can"></i> Delete</button>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-card-header">
+                    <span class="subject-tag">Physics</span>
+                    <span class="diff-tag"><i class="fa-solid fa-signal" style="color: #fbbf24;"></i> Medium</span>
+                </div>
+                <div class="qa-text">
+                    <h4>What is the acceleration due to gravity on Earth?</h4>
+                    <p><i class="fa-solid fa-check-circle"></i> Answer: 9.8 m/s²</p>
+                </div>
+                <div class="action-links">
+                    <button class="edit"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                    <button class="delete"><i class="fa-solid fa-trash-can"></i> Delete</button>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-card-header">
+                    <span class="subject-tag">Computer Science</span>
+                    <span class="diff-tag"><i class="fa-solid fa-signal" style="color: #ef4444;"></i> Hard</span>
+                </div>
+                <div class="qa-text">
+                    <h4>What is the time complexity of the QuickSort algorithm in the average case?</h4>
+                    <p><i class="fa-solid fa-check-circle"></i> Answer: O(n log n)</p>
+                </div>
+                <div class="action-links">
+                    <button class="edit"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                    <button class="delete"><i class="fa-solid fa-trash-can"></i> Delete</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

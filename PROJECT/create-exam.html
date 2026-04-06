@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Exam | Teacher Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .form-container {
+            width: 90%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .form-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-header h2 {
+            font-size: 1.8rem;
+            color: #f43f5e;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            color: #f8fafc;
+            font-family: 'Outfit', sans-serif;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #f43f5e;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        
+        .question-block {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #f43f5e;
+        }
+
+        .btn-add {
+            background: transparent;
+            border: 1px dashed #f43f5e;
+            color: #f43f5e;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-bottom: 2rem;
+        }
+
+        .btn-add:hover {
+            background: rgba(244, 63, 94, 0.1);
+        }
+
+        .btn-publish {
+            background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+            color: white;
+            border: none;
+            padding: 1rem;
+            width: 100%;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(225, 29, 72, 0.4);
+            transition: all 0.3s;
+        }
+
+        .btn-publish:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(225, 29, 72, 0.6);
+        }
+    </style>
+</head>
+<body class="teacher-theme">
+
+    <a href="teacher-dashboard.html" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i> Back to Dashboard
+    </a>
+
+    <div class="form-container">
+        <div class="form-header">
+            <h2><i class="fa-solid fa-file-signature"></i> Create New Exam</h2>
+            <p style="color: #94a3b8; margin-top: 0.5rem;">Configure your exam settings and add questions below.</p>
+        </div>
+
+        <form onsubmit="event.preventDefault(); alert('Exam Published Successfully!'); window.location.href='teacher-dashboard.html';">
+            <div class="form-group">
+                <label>Exam Title</label>
+                <input type="text" placeholder="e.g. Midterm Advanced Mathematics" required>
+            </div>
+            
+            <div style="display: flex; gap: 1rem;">
+                <div class="form-group" style="flex: 1;">
+                    <label>Duration (Minutes)</label>
+                    <input type="number" placeholder="60" required min="10">
+                </div>
+                <div class="form-group" style="flex: 1;">
+                    <label>Total Marks</label>
+                    <input type="number" placeholder="100" required min="1">
+                </div>
+            </div>
+
+            <h3 style="margin: 2rem 0 1rem 0; color: #f8fafc; font-weight: 500;">Questions</h3>
+
+            <div class="question-block">
+                <div class="form-group">
+                    <label>Question 1</label>
+                    <input type="text" placeholder="Enter your question here..." required>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Option A (Correct)</label>
+                        <input type="text" placeholder="Correct answer" required style="border-color: #10b981;">
+                    </div>
+                    <div class="form-group">
+                        <label>Option B</label>
+                        <input type="text" placeholder="Distractor" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Option C</label>
+                        <input type="text" placeholder="Distractor" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Option D</label>
+                        <input type="text" placeholder="Distractor" required>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="btn-add" onclick="alert('In a real app, this would append another question block!');"><i class="fa-solid fa-plus"></i> Add Another Question</button>
+
+            <button type="submit" class="btn-publish"><i class="fa-solid fa-upload"></i> Publish Exam to Students</button>
+        </form>
+    </div>
+
+</body>
+</html>

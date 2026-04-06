@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard | Exam Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .dashboard-container {
+            width: 90%;
+            max-width: 1000px;
+            margin-top: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .dashboard-header {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .dashboard-header h2 {
+            font-size: 2rem;
+            background: linear-gradient(135deg, #7dd3fc 0%, #0ea5e9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .action-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .action-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #38bdf8;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .action-card i {
+            font-size: 3rem;
+            color: #38bdf8;
+            margin-bottom: 0.5rem;
+        }
+
+        .action-card h3 {
+            color: #f8fafc;
+            font-size: 1.2rem;
+        }
+        
+        .action-card p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .logout-link {
+            color: #94a3b8;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .logout-link:hover {
+            color: #f8fafc;
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="student-theme">
+
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <div>
+                <h2>Student Hub</h2>
+                <p style="color: #94a3b8; margin-top: 0.5rem;">Welcome back! Ready to test your knowledge?</p>
+            </div>
+            <a href="index.html" class="logout-link">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </a>
+        </div>
+
+        <div class="action-grid">
+            <div class="action-card" onclick="window.location.href='take-exam.html';">
+                <i class="fa-solid fa-laptop-code"></i>
+                <h3>Upcoming Exams</h3>
+                <p>View your scheduled exams and start taking your pending tests.</p>
+            </div>
+
+            <div class="action-card" onclick="window.location.href='student-results.html';">
+                <i class="fa-solid fa-square-poll-vertical"></i>
+                <h3>Past Results</h3>
+                <p>Check the scores, feedback, and analytics from your previously completed exams.</p>
+            </div>
+
+            <div class="action-card" onclick="window.location.href='student-materials.html';">
+                <i class="fa-solid fa-book-journal-whills"></i>
+                <h3>Study Materials</h3>
+                <p>Access notes, presentations, and resources uploaded by your teachers.</p>
+            </div>
+
+            <div class="action-card" onclick="window.location.href='student-profile.html';">
+                <i class="fa-solid fa-user-gear"></i>
+                <h3>My Profile</h3>
+                <p>Update your personal information and adjust your account settings.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
